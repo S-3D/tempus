@@ -13,11 +13,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-mutation="props.handler1" @dragenter="props.onDragEnter" @dragleave="props.onDragLeave"
-    @dragover="props.onDragOver" @drop="props.onDrop" class="droptarget q-gutter-md">
+  <div @dragenter="props.onDragEnter" @dragleave="props.onDragLeave" @dragover="props.onDragOver" @drop="props.onDrop"
+    class="droptarget q-gutter-md">
 
     <q-chip draggable="true" @dragstart="props.onDragStart" v-for="(activite, index) in props.listeActivites" :id="index"
-      square color="secondary" text-color="white" icon="event"> {{ activite }} </q-chip>
+      square color="secondary" text-color="white" icon="event"> {{ activite }}
+    </q-chip>
 
 
 

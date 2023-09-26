@@ -11,23 +11,7 @@ const status2 = ref([])
 const listeActivites = ['Tache 1', 'Tache 2', 'Tache 3 ']
 
 
-function handler1(mutationRecords) {
-  status1.value = []
-  for (const index in mutationRecords) {
-    const record = mutationRecords[index]
-    const info = `type: ${record.type}, nodes added: ${record.addedNodes.length > 0 ? 'true' : 'false'}, nodes removed: ${record.removedNodes.length > 0 ? 'true' : 'false'}, oldValue: ${record.oldValue}`
-    status1.value.push(info)
-  }
-}
 
-function handler2(mutationRecords) {
-  status2.value = []
-  for (const index in mutationRecords) {
-    const record = mutationRecords[index]
-    const info = `type: ${record.type}, nodes added: ${record.addedNodes.length > 0 ? 'true' : 'false'}, nodes removed: ${record.removedNodes.length > 0 ? 'true' : 'false'}, oldValue: ${record.oldValue}`
-    status2.value.push(info)
-  }
-}
 
 function onDragStart(e) {
   e.dataTransfer.setData('text', e.target.id)
@@ -82,15 +66,15 @@ function onDrop(e) {
 
       <template v-slot:before>
         <DatePanel>
-          <DropComponent :handler2="handler2" :onDragStart="onDragStart" :onDragEnter="onDragEnter"
-            :onDragLeave="onDragLeave" :onDragOver="onDragOver" :onDrop="onDrop" />
+          <DropComponent :onDragStart="onDragStart" :onDragEnter="onDragEnter" :onDragLeave="onDragLeave"
+            :onDragOver="onDragOver" :onDrop="onDrop" />
         </DatePanel>
       </template>
 
       <template v-slot:after>
         <ActivityPanel>
-          <DragComponent :listeActivites="listeActivites" :handler1="handler1" :onDragStart="onDragStart"
-            :onDragEnter="onDragEnter" :onDragLeave="onDragLeave" :onDragOver="onDragOver" :onDrop="onDrop" />
+          <DragComponent :listeActivites="listeActivites" :onDragStart="onDragStart" :onDragEnter="onDragEnter"
+            :onDragLeave="onDragLeave" :onDragOver="onDragOver" :onDrop="onDrop" />
         </ActivityPanel>
       </template>
 

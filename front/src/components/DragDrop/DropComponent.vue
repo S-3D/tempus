@@ -17,9 +17,10 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .drop-target {
-  height: 400px;
-  width: 200px;
-  min-width: 200px;
+  height: 50px;
+  width: 80%;
+  margin: auto;
+  min-width: 20px;
   background-color: gainsboro;
 }
 
@@ -32,13 +33,6 @@ const props = defineProps({
   height: 100px;
   float: left;
   cursor: pointer;
-}
-
-.drop-target {
-  height: 200px;
-  width: 100px;
-  min-width: 100px;
-  background-color: gainsboro;
 }
 
 .navy {
