@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Metadata\ApiResource;
 
+
+#[ApiResource()]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User implements UserInterface
+class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,10 +20,7 @@ class User implements UserInterface
     private ?string $username = null;
 
     #[ORM\Column]
-    private array $roles = [];
-
-    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
-    private array $role = [];
+    private ?string $role = null;
 
     public function getId(): ?int
     {
@@ -41,53 +39,16 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->username;
-    }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): static
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials(): void
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-    public function getRole(): array
+    public function getRole(): string
     {
         return $this->role;
     }
 
-    public function setRole(array $role): static
+    public function setRole(string $role): static
     {
         $this->role = $role;
-
         return $this;
     }
 }

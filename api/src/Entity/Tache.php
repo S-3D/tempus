@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use App\Repository\TacheRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
 
+
+#[ApiResource()]
 #[ORM\Entity(repositoryClass: TacheRepository::class)]
 class Tache
 {
